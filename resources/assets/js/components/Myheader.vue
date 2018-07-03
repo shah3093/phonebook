@@ -8,12 +8,9 @@
 
             <div class="navbar-menu is-active">
                 <!-- shown on mobile -->
-                <a class="navbar-item">
-                    Home
-                </a>
-                <a class="navbar-item">
-                    Home
-                </a>
+               
+                <router-link to="/home" class="navbar-item">Home</router-link>
+                <router-link to="/about" class="navbar-item">About</router-link>
             </div>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
