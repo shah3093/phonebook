@@ -9,9 +9,14 @@
 
     </head>
     <body>
-        <h1>Hello</h1>
-        <div id="app"></div>
+        <div id="app">
+
+            <Myheader></Myheader>
+
+            <Myfooter></Myfooter>
+
+        </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
-    </body>
+</body>
 </html>
