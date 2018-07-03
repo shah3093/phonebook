@@ -1,8 +1,11 @@
 <template>
 
-    <nav class="panel">
+    <nav class="panel column is-offset-2 is-8">
         <p class="panel-heading">
-            repositories
+            Phonebook
+            <button class="button is-link is-outlined ">
+                Add new
+            </button>
         </p>
         <div class="panel-block">
             <p class="control has-icons-left">
@@ -12,57 +15,27 @@
                 </span>
             </p>
         </div>
-        <p class="panel-tabs">
-            <a class="is-active">all</a>
-            <a>public</a>
-            <a>private</a>
-            <a>sources</a>
-            <a>forks</a>
-        </p>
+
         <a class="panel-block is-active">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
+            <span class="column is-9">bulma</span>
+
+            <span class="panel-icon is-1 column">
+                <i class="fas fa-eye has-text-info"></i>
             </span>
-            bulma
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
+
+            <span class="panel-icon is-1 column">
+                <i class="fas fa-edit has-text-primary"></i>
             </span>
-            marksheet
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
+
+            <span class="panel-icon is-1 column">
+                <i class="fas fa-trash has-text-danger"></i>
             </span>
-            minireset.css
+
         </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
-            </span>
-            jgthms.github.io
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            daniellowtw/infboard
-        </a>
-        <a class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </span>
-            mojs
-        </a>
-        <label class="panel-block">
-            <input type="checkbox">
-            remember me
-        </label>
+
+
         <div class="panel-block">
-            <button class="button is-link is-outlined is-fullwidth">
-                reset all filters
-            </button>
+
         </div>
     </nav>
 </template>
