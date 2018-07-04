@@ -24,7 +24,7 @@
                 </span>
 
                 <span class="panel-icon is-1 column">
-                    <i class="fas fa-edit has-text-primary"></i>
+                    <i class="fas fa-edit has-text-primary" @click="openEdit(key)"></i>
                 </span>
 
                 <span class="panel-icon is-1 column">
@@ -40,18 +40,21 @@
         </nav>
         <Add :openmodal='addActive' @closeRequest='close'></Add>
         <Show :openmodal='showActive' @closeRequest='close'></Show>
+        <Update :openmodal='updateActive' @closeRequest='close'></Update>
     </div>
 </template>
 
 <script>
     let Add = require('./Add.vue');
     let Show = require('./Show.vue');
+    let Update = require('./Update.vue');
     export default{
-        components: {Add,Show},
+        components: {Add, Show, Update},
         data() {
             return{
                 addActive: '',
                 showActive: '',
+                updateActive: '',
                 lists: {},
                 errors: {}
             }
@@ -65,11 +68,15 @@
                 this.addActive = 'is-active'
             },
             close() {
-                this.addActive = this.showActive = ''
+                this.addActive = this.showActive = this.updateActive = ''
             },
             openShowModal(key) {
                 this.$children[1].list = this.lists[key];
                 this.showActive = 'is-active'
+            },
+            openEdit(key) {
+                this.$children[2].list = this.lists[key];
+                this.updateActive = 'is-active'
             }
         }
     }

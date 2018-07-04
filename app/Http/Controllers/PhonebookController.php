@@ -48,11 +48,10 @@ class PhonebookController extends Controller {
      */
     public function show(Phonebook $phonebook) {
         //
-        
     }
-    
-    public function getData(){
-        return Phonebook::orderBy('name','DESC')->get();
+
+    public function getData() {
+        return Phonebook::orderBy('name', 'DESC')->get();
     }
 
     /**
@@ -72,8 +71,13 @@ class PhonebookController extends Controller {
      * @param  \App\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Phonebook $phonebook) {
+    public function update(PhonebookRequest $request) {
         //
+        $pb =  Phonebook::find($request->id);
+        $pb->name = $request->name;
+        $pb->email = $request->email;
+        $pb->phone = $request->phone;
+        $pb->save();
     }
 
     /**

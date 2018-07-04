@@ -42,11 +42,7 @@
         props: ['openmodal'],
         data() {
             return{
-                list: {
-                    email: '',
-                    name: '',
-                    phone: ''
-                },
+                list: {},
                 errors: {}
             }
         },
@@ -55,7 +51,7 @@
                 this.$emit('closeRequest')
             },
             save() {
-                axios.post('/phonebook', this.$data.list).then((response) => this.closemodal())
+                axios.patch(`/phonebook/$(this.list.id)`, this.$data.list).then((response) => this.closemodal())
                         .catch((error) => this.errors = error.response.data.errors)
             }
         }
