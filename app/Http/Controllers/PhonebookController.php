@@ -87,7 +87,7 @@ class PhonebookController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(Phonebook $phonebook) {
-        //
+        Phonebook::where('id',$phonebook->id)->delete();
     }
 
 }

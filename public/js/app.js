@@ -43947,6 +43947,17 @@ var Update = __webpack_require__(54);
         openEdit: function openEdit(key) {
             this.$children[2].list = this.lists[key];
             this.updateActive = 'is-active';
+        },
+        del: function del(key, id) {
+            var _this2 = this;
+
+            if (confirm("Are you sure ?")) {
+                axios.delete('/phonebook/' + id).then(function (response) {
+                    return _this2.lists.splice(key, 1);
+                }).catch(function (error) {
+                    return _this2.errors = error.response.data.errors;
+                });
+            }
         }
     }
 });
@@ -44741,7 +44752,16 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _vm._m(1, true)
+              _c("span", { staticClass: "panel-icon is-1 column" }, [
+                _c("i", {
+                  staticClass: "fas fa-trash has-text-danger",
+                  on: {
+                    click: function($event) {
+                      _vm.del(key, item.id)
+                    }
+                  }
+                })
+              ])
             ])
           }),
           _vm._v(" "),
@@ -44787,14 +44807,6 @@ var staticRenderFns = [
           })
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "panel-icon is-1 column" }, [
-      _c("i", { staticClass: "fas fa-trash has-text-danger" })
     ])
   }
 ]

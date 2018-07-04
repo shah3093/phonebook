@@ -28,7 +28,7 @@
                 </span>
 
                 <span class="panel-icon is-1 column">
-                    <i class="fas fa-trash has-text-danger"></i>
+                    <i class="fas fa-trash has-text-danger" @click="del(key,item.id)"></i>
                 </span>
 
             </a>
@@ -77,6 +77,12 @@
             openEdit(key) {
                 this.$children[2].list = this.lists[key];
                 this.updateActive = 'is-active'
+            },
+            del(key, id) {
+                if (confirm("Are you sure ?")) {
+                    axios.delete(`/phonebook/${id}`, ).then((response) => this.lists.splice(key,1))
+                            .catch((error) => this.errors = error.response.data.errors)
+                }
             }
         }
     }
