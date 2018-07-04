@@ -16,11 +16,11 @@
                 </p>
             </div>
 
-            <a class="panel-block is-active">
-                <span class="column is-9">bulma</span>
+            <a class="panel-block" v-for='item,key in lists'>
+                <span class="column is-9">{{item.name}}</span>
 
                 <span class="panel-icon is-1 column">
-                    <i class="fas fa-eye has-text-info"></i>
+                    <i class="fas fa-eye has-text-info" @click="openShowModal(key)"></i>
                 </span>
 
                 <span class="panel-icon is-1 column">
@@ -39,24 +39,37 @@
             </div>
         </nav>
         <Add :openmodal='addActive' @closeRequest='close'></Add>
+        <Show :openmodal='showActive' @closeRequest='close'></Show>
     </div>
 </template>
 
 <script>
     let Add = require('./Add.vue');
+    let Show = require('./Show.vue');
     export default{
-        components: {Add},
+        components: {Add,Show},
         data() {
             return{
-                addActive: ''
+                addActive: '',
+                showActive: '',
+                lists: {},
+                errors: {}
             }
+        },
+        mounted() {
+            axios.get('/getData', ).then((response) => this.lists = response.data)
+                    .catch((error) => this.errors = error.response.data.errors)
         },
         methods: {
             openAdd() {
-                this.addActive= 'is-active'
+                this.addActive = 'is-active'
             },
-            close(){
-                this.addActive = ''
+            close() {
+                this.addActive = this.showActive = ''
+            },
+            openShowModal(key) {
+                this.$children[1].list = this.lists[key];
+                this.showActive = 'is-active'
             }
         }
     }

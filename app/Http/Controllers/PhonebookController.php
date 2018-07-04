@@ -48,6 +48,11 @@ class PhonebookController extends Controller {
      */
     public function show(Phonebook $phonebook) {
         //
+        
+    }
+    
+    public function getData(){
+        return Phonebook::orderBy('name','DESC')->get();
     }
 
     /**
