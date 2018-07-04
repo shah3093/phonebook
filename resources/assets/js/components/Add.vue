@@ -55,7 +55,9 @@
                 this.$emit('closeRequest')
             },
             save() {
-                axios.post('/phonebook', this.$data.list).then((response) => this.closemodal())
+                axios.post('/phonebook', this.$data.list).then((response) => {this.closemodal()
+                        this.$parent.lists.push(response.data)
+                    })
                         .catch((error) => this.errors = error.response.data.errors)
             }
         }
